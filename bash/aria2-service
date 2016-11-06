@@ -3,7 +3,8 @@
 
 ARIA_DIR="/home/aria2"
 ARIA="/usr/bin/aria2c"
-ARIA_OPTIONS="--enable-rpc --rpc-listen-all --dir=$ARIA_DIR/aria2-current.log --log=$ARIA_DIR/aria2-dl-current.log --listen-port=6800 -D"
+DL_DIR="/media/1EF6C739F6C71047/kData/downloads"
+ARIA_OPTIONS="--enable-rpc --rpc-listen-all --dir=$DL_DIR --log=$ARIA_DIR/aria2-dl-current.log --listen-port=6800 -D"
 
 #Main
 cd $ARIA_BIN
