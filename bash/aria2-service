@@ -31,8 +31,19 @@ case $1 in
 		sleep 1
 		/etc/init.d/aria2-service start
 	;;
+	status)
+		PID=$(pgrep aria2c)
+		if [ -z "$PID" ]
+		then
+				echo "aria2 is not running"
+				exit 0
+		else
+				echo "aria2 PID: $PID"
+        fi
+    ;;
+
 	*)
-		echo "Usage: $0 {start|stop|restart}" >&2
+		echo "Usage: $0 {start|stop|restart|status}" >&2
 		exit 1
 	;;	 
 esac 
