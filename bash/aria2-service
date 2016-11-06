@@ -1,0 +1,38 @@
+# @author: gsimar
+# last modif: 06/11/16
+
+ARIA_DIR="/home/aria2"
+ARIA="/usr/bin/aria2c"
+ARIA_OPTIONS="--enable-rpc --rpc-listen-all --dir=$ARIA_DIR/aria2-current.log --log=$ARIA_DIR/aria2-dl-current.log --listen-port=6800 -D"
+
+#Main
+cd $ARIA_BIN
+
+case $1 in
+	start)
+		echo "Starting Aria2"
+		$ARIA $ARIA_OPTIONS
+	;;
+	stop)
+		echo "Stopping Aria2..."
+		PID=$(pgrep aria2c)
+		kill -9 $PID
+		PID=$(pgrep aria2c)
+		if [ -z "$PID" ]
+		then
+			echo "...done"
+			exit 0
+		fi	
+		echo "ramaining process:$PID"
+		
+	;;
+	restart)
+		/etc/init.d/aria2-service stop
+		sleep 1
+		/etc/init.d/aria2-service start
+	;;
+	*)
+		echo "Usage: $0 {start|stop|restart}" >&2
+		exit 1
+	;;	 
+esac 
