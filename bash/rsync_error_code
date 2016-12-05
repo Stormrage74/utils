@@ -1,0 +1,96 @@
+function error_code
+        {
+            case $1 in
+                0)
+                        print 'Success'
+                        exit 0
+                        ;;
+                1)
+                        print 'Syntax or usage error'
+                        exit 1
+                        ;;
+                2)
+                        print 'Protocol incompatibility'
+                        exit 1
+                        ;;
+                3)
+                        print 'Errors selecting input/output files, dirs'
+                        exit 1
+                        ;;
+                4)
+                        print 'Requested  action not supported: an attempt was made to manipulate 64-bit files on a platform that cannot support them; or an option was specified that is supported by the client and not by the server.'
+                        exit 1
+                        ;;
+                5)
+                        print 'Error starting client-server protocol'
+                        exit 1
+                        ;;
+                6)
+                        print 'Daemon unable to append to log-file'
+                        exit 1
+                        ;;
+                10)
+                        print 'Error in socket I/O'
+                        exit 1
+                        ;;
+                11)
+                        print 'Error in file I/O'
+                        exit 1
+                        ;;
+                12)
+                        print 'Error in rsync protocol data stream'
+                        exit 1
+                        ;;
+                13)
+                        print 'Errors with program diagnostics'
+                        exit 1
+                        ;;
+                14)
+                        print 'Error in IPC code'
+                        exit 1
+                        ;;
+				20)
+                        print 'Received SIGUSR1 or SIGINT'
+                        exit 1
+                        ;;
+                21)
+                        print 'Some error returned by waitpid()'
+                        exit 1
+                        ;;
+                22)
+                        print 'Error allocating core memory buffers'
+                        exit 1
+                        ;;
+                23)
+                        print 'Partial transfer due to error'
+                        ;;
+                24)
+                        print 'Partial transfer due to vanished source files'
+                        ;;
+                25)
+                        print 'The --max-delete limit stopped deletions'
+                        exit 1
+                        ;;
+                30)
+                        print 'Timeout in data send/receive'
+                        exit 1
+                        ;;
+                35)
+                        print 'Timeout waiting for daemon connection'
+                        exit 1
+                        ;;
+                127)
+                        print 'rsync binaries problem'
+                        exit 1
+                        ;;
+                255)
+                        print 'unexplained error encountered'
+                        exit 1
+                        ;;
+                *)
+                        print 'impossible error encountered : $1'
+                        ;;
+        esac
+        }
+        
+        error_code $?
